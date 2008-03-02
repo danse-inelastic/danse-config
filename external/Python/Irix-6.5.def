@@ -1,0 +1,24 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+# Revision 1.2  1999/06/09 01:38:47  mga
+# Fixed typos and added header
+#
+
+#
+# Irix settings for Python
+#
+
+PYTHON_INCLUDES = $(PYTHON_INCDIR)
+PYTHON_LIBS =
+
+PYTHON_APIREQS = -lpthread -lmpc -lm
+
+#
+# End of file

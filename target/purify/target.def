@@ -1,0 +1,32 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+# Revision 1.2  1999/07/01 05:15:41  aivazis
+# Accept comma separated list of targets in TARGET
+#
+# Revision 1.1  1999/06/21 03:08:40  aivazis
+# Original source
+#
+
+#
+# Here are the build-specific flags
+#
+# C
+#
+    CC = purify $(COMPILER_CC_NAME)
+#
+# C++
+#
+    CXX = purify $(COMPILER_CXX_NAME)
+#
+# FORTRAN
+#
+#   FORTRAN is not supported by insure
+#
+# END OF FILE

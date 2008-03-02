@@ -1,0 +1,12 @@
+#
+# $Log: not supported by cvs2svn $
+#
+
+(o) Select compiler or compiler set at build time and overide the default
+
+(o) How do you handle the coexistence of code compiled by different C++ compilers
+
+(o) How do you allow external packages to enable compiler features on a per platform basis
+    or vica versa?
+
+# End of file

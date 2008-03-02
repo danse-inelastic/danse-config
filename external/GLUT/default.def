@@ -1,0 +1,24 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+#
+# Read the local settigs
+#
+
+include GLUT/$(TARGET_PLATFORM).def
+
+#
+# Adjust the external variables to include GLUT
+#
+
+    EXTERNAL_LIBS += $(GLUT_LIB)
+
+#
+# End of file

@@ -1,0 +1,18 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+#
+# Unix settings for GLUT
+#
+
+GLUT_LIB = $(TOOLS_LIBDIR)/libglut.a
+
+#
+# End of file

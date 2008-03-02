@@ -1,0 +1,21 @@
+// -*- C++ -*-
+//
+//--------------------------------------------------------------------------
+//
+//
+//                       Michael A.G. Aivazis
+//                California Institute of Technology
+//                   (C) 1999 All Rights Reserved
+//
+//--------------------------------------------------------------------------
+
+// $Log: not supported by cvs2svn $
+//
+
+//
+// Defficiency file: route stack to stack.h
+//
+
+#include <stack.h>
+
+// End of file

@@ -1,0 +1,19 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+#
+# Win32 default settings for Python
+#
+
+PYTHON_INCLUDES= $(PYTHON_INCDIR)
+PYTHON_LIBS = $(PYTHON_LIBDIR)/python15.lib
+
+#
+# End of file

@@ -1,0 +1,29 @@
+#--------------------------------------------------------------------------
+#
+#                          Jarek Knap
+#                California Institute of Technology
+#                   (C) 2004 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+#
+# Default settings for VTK
+#
+
+    VTK_INCLUDES = $(VTK_INCDIR)
+    VTK_LIBS = -L$(VTK_LIBDIR) -lvtkIO -lvtkCommon
+
+    EXTERNAL_DEFINES += WITH_VTK
+    EXTERNAL_INCLUDES += $(VTK_INCLUDES)
+    EXTERNAL_LIBS += $(VTK_LIBS)
+
+# add gcc option to turn off warning about deprecated headers in Xdmf sources
+ifeq (gcc, ${findstring gcc, $(TARGET_CXX)})
+    TARGET_CXX_FLAGS += -Wno-deprecated
+endif
+
+# version
+# $Id: default.def,v 1.3 2007-03-09 20:16:00 rapa Exp $
+
+#
+# End of file

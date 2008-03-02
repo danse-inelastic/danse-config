@@ -1,0 +1,43 @@
+// -*- C++ -*-
+//
+//--------------------------------------------------------------------------
+//
+//
+//                       Michael A.G. Aivazis
+//                California Institute of Technology
+//                   (C) 1999 All Rights Reserved
+//
+//--------------------------------------------------------------------------
+
+// $Log: not supported by cvs2svn $
+// Revision 1.2  2001/06/12 19:40:00  cummings
+// Added include guards to these replacement header files.
+//
+// Revision 1.1  2001/04/20 01:43:16  cummings
+// Original source for remaining replacement files for new-style
+// C header files, copied from the MIPSpro-7.3 area and modified
+// for Linux86.
+//
+//
+
+#if !defined(__config_compiler_cstddef__)
+#define __config_compiler_cstddef__
+
+//
+// Deficiency file: route cstddef to stddef.h
+// and import symbols into namespace std
+//
+
+#include <stddef.h>
+
+namespace std {
+  /* Standard C library language support */
+  using ::ptrdiff_t;
+  using ::size_t;
+  //  wchar_t is not declared as a type in PGI C++
+  //  using ::wchar_t;
+}
+
+#endif
+
+// End of file

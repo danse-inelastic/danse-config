@@ -1,0 +1,16 @@
+#--------------------------------------------------------------------------
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+# ACIS
+    ACIS_INCLUDE_DIRS = base bool cstr kern mmgr spline
+    ACIS_LIBRARIES = boolean ct_husk ga_husk euler constrct intersct kernel spline kernel lawutil baseutil
+include ACIS/default.def
+
+#
+# End of file

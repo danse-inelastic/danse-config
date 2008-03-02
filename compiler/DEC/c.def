@@ -1,0 +1,16 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+#
+# Use the latest version of the Digital C compiler
+#
+include DigitalC-5.2/c.def
+#
+# End of file

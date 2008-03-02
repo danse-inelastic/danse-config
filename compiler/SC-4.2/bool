@@ -1,0 +1,24 @@
+// -*- C++ -*-
+//
+//                       Michael A.G. Aivazis
+//                California Institute of Technology
+//                   (C) 1999 All Rights Reserved
+//
+
+// $Log: not supported by cvs2svn $
+
+//
+// Defficiency file: define bool, true, false
+//
+
+#if !defined(__bool_DEFICIENCY)
+#define __bool_DEFICIENCY
+
+typedef int bool;
+
+const int true = 1;
+const int false = 0;
+
+#endif
+
+// End of file

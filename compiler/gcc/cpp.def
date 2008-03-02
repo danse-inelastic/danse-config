@@ -1,0 +1,21 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+# Revision 1.1  2000/08/17 22:00:50  cummings
+# Added new build system compiler definition files for GCC compiler.
+# These files defer to the most current version of gcc, which is 2.95.2.
+#
+#
+
+#
+# Use the latest version of the GNU C++ compiler
+#
+include gcc-3.0/cpp.def
+#
+# End of file

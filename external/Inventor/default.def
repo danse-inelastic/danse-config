@@ -1,0 +1,23 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+
+#
+# Default settings for Tecplot
+#
+
+    INVENTOR_INCLUDES = $(INVENTOR_INCDIR)
+    INVENTOR_LIBS = -L$(INVENTOR_LIBDIR) -lInventor -lInventorXt -limage
+
+    EXTERNAL_DEFINES = WITH_INVENTOR
+    EXTERNAL_INCLUDES += $(INVENTOR_INCLUDES)
+    EXTERNAL_LIBS += $(INVENTOR_LIBS)
+
+#
+# End of file

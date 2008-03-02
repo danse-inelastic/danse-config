@@ -1,0 +1,28 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 2001 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+# Revision 1.1  2001/11/30 02:58:27  cummings
+# Irix-specific definitions file for using Tau package.
+#
+#
+
+#
+# Irix settings from platform-specific TAU Makefile
+#
+
+ifeq (64bit,$(findstring 64bit,$(TARGETS)))
+    include $(TAUROOTDIR)/sgi64/lib/Makefile.tau
+    EXTERNAL_LIBPATH += -rpath $(TAUROOTDIR)/sgi64/lib
+else
+    include $(TAUROOTDIR)/sgin32/lib/Makefile.tau
+    EXTERNAL_LIBPATH += -rpath $(TAUROOTDIR)/sgin32/lib
+endif
+
+#
+# End of file

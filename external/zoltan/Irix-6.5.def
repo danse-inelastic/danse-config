@@ -1,0 +1,21 @@
+#--------------------------------------------------------------------------
+#
+#                       VTF Development Team
+#                California Institute of Technology
+#                   (C) 2002 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+#
+#  $Log: not supported by cvs2svn $
+#
+
+# Platform-specific settings for Irix
+
+ifeq (64bit, ${findstring 64bit, $(BLD_USER_TARGET)})
+    ZOLTAN_LIBDIR = $(ZOLTAN_DIR)/Obj_sgi64
+else
+    ZOLTAN_LIBDIR = $(ZOLTAN_DIR)/Obj_sgi32
+endif
+
+#
+# End of file

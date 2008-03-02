@@ -1,0 +1,19 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 2001 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+#
+
+#
+# Include the tau configuration file
+#
+
+include TAU/default.def
+
+#
+# End of file

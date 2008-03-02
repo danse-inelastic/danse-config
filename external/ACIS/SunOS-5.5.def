@@ -1,0 +1,22 @@
+#--------------------------------------------------------------------------
+#
+#                       Michael A.G. Aivazis
+#                California Institute of Technology
+#                   (C) 1999 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+# $Log: not supported by cvs2svn $
+# Revision 1.2  1999/06/09 01:34:29  mga
+# Fixed typos and added header
+#
+
+#
+# SunOS settings for ACIS
+#
+
+ACIS_INCLUDES = ${addprefix $(ACIS_INCDIR)/, $(ACIS_INCLUDE_DIRS)}
+ACIS_LIBS = ${addsuffix .$(EXT_AR), ${addprefix $(ACIS_LIBDIR)/lib, $(ACIS_LIBRARIES)}}
+
+#
+# End of file

@@ -1,0 +1,13 @@
+# export root directory of documentation
+EXPORT_DOCDIR = $(EXPORT_ROOT)/docs/$(PROJECT)/$(PACKAGE)
+
+$(EXPORT_DOCDIR):
+	$(MKDIR) $(MKPARENTS) $(EXPORT_DOCDIR)
+
+PACKAGE_HTML_INDEX = $(EXPORT_DOCDIR)/index.html
+
+$(PACKAGE_HTML_INDEX): index.html $(EXPORT_DOCDIR)
+	$(CP_F) index.html $(PACKAGE_HTML_INDEX)
+
+
+package-documentation-html-index:: $(PACKAGE_HTML_INDEX)

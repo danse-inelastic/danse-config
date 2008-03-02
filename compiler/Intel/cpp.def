@@ -1,0 +1,19 @@
+#--------------------------------------------------------------------------
+#
+#                       Julian C. Cummings
+#                California Institute of Technology
+#                   (C) 2004 All Rights Reserved
+#
+#--------------------------------------------------------------------------
+
+#
+# Use the latest version of the Intel C++ compiler
+#
+
+include Intel9/cpp.def
+
+# version
+# $Id: cpp.def,v 1.3 2006-08-30 02:22:24 cummings Exp $
+
+#
+# End of file
