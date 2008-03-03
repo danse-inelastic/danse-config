@@ -3,7 +3,7 @@
 #
 
 # C++ wrapper library for HDF5 (depends on hdf5.a)
-    EXTERNAL_LIBS += $(BLD_LIBDIR)/hdf5++.$(EXT_LIB)
+    EXTERNAL_LIBS += -lhdf5_cpp
 
 # include and library paths are the same as in public HDF5 definitions
     include HDF5/default.def
