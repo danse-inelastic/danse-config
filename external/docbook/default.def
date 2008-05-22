@@ -172,6 +172,8 @@ DOCBOOK_CONFIG_DIR = $(DIR_CONFIG)/external/docbook
 # the dbxmlFromTemplate tool
 DBXMLFROMTEMPLATE = $(DOCBOOK_CONFIG_DIR)/dbxmlFromTemplate.py
 
+# the dummy tex file
+DUMMY_TEX_MATH_EQUATIONS = $(DOCBOOK_CONFIG_DIR)/tex-math-equations.tex.dummy
 
 
 $(CUSTOM_DB2HTML_XSL).t:
@@ -231,7 +233,7 @@ $(EXPORT_HTML_EQUATION_FIGURES): figures/equations/tag
 	rsync --exclude=.svn  -av figures/equations/ $(EXPORT_HTML_FIGURES)/equations/
 
 
-htmldoc: generate-docbook-sources-for-html-output $(HTML_INDEX)
+htmldoc: $(HTML_INDEX)
 
 generate-docbook-sources-for-html-output: $(DOCBOOKSOURCETEMPLATES)
 	for i in $(DOCBOOKSOURCETEMPLATES) ; do \
@@ -259,7 +261,7 @@ tex-math-equations.dvi: tex-math-equations.tex
 tex-math-equations.tex: $(EXPORT_HTML_DOC_DIR) *.xml export-html-figures  $(CUSTOM_DB2HTML_XSL)
 	$(XSLTPROC) --nonet --stringparam base.dir $(EXPORT_HTML_DOC_DIR)/ $(CUSTOM_DB2HTML_XSL) $(DOCBOOKMAINFILE)
 	if [ ! -f tex-math-equations.tex ] ; then \
-	  echo "\documentclass{article} \pagestyle{empty} \begin{document} hello \end{document}" > tex-math-equations.tex  ; \
+	  $(CP) $(DUMMY_TEX_MATH_EQUATIONS) tex-math-equations.tex ; \
 	fi
 
 
@@ -282,7 +284,7 @@ $(PDFFILE): $(TEXFILE)
 	cd $(EXPORT_LATEX_DOC_DIR) && TEXINPUTS=.:: $(TEX_LATEX) $(DOCBOOKMAIN) && cd -
 #	cd $(EXPORT_LATEX_DOC_DIR) && TEXINPUTS=.:$(PWD):: $(TEX_LATEX) $< && cd -
 
-texdoc:  generate-docbook-sources-for-latex-output $(TEXFILE) $(PDFFILE)
+texdoc: $(TEXFILE) $(PDFFILE)
 
 
 generate-docbook-sources-for-latex-output: $(DOCBOOKSOURCETEMPLATES)
@@ -316,7 +318,15 @@ $(MAIN_HTML_INDEX): index.html
 
 mainindex: $(MAIN_HTML_INDEX)
 
-export-docbook-docs:  export-html-figures export-latex-figures htmldoc htmltarball texdoc mainindex
+export-docbook-docs: 
+	$(MM) export-html-figures 
+	$(MM) export-latex-figures 
+	$(MM) generate-docbook-sources-for-html-output
+	$(MM) htmldoc 
+	$(MM) htmltarball 
+	$(MM) generate-docbook-sources-for-latex-output
+	$(MM) texdoc 
+	$(MM) mainindex
 
 
 # version
