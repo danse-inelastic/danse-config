@@ -16,6 +16,6 @@
 #
 # Use the latest version of the GNU Fortran compiler
 #
-include gcc-3.0/f77.def
+include gcc-4.0/f77.def
 #
 # End of file

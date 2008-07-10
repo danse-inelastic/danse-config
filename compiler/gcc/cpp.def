@@ -16,6 +16,6 @@
 #
 # Use the latest version of the GNU C++ compiler
 #
-include gcc-3.0/cpp.def
+include gcc-4.0/cpp.def
 #
 # End of file
