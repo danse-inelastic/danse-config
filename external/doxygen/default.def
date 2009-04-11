@@ -38,24 +38,27 @@ GetRevision = svn info|grep Revision
 # temporary file for sed
 sed_tmp = .doxygen.sed.tmp
 
+# the echo command
+ECHO = /bin/echo
+
 
 #$(EXPORT_DOCDIR):
 #	$(MKDIR) $(MKPARENTS) $(EXPORT_DOCDIR)
 
 export-doxygen-docs:  $(EXPORT_DOCDIR)
 	if [ ! -f $(LOCAL_DOXYFILE) ] ; then { \
-	  echo "Copy default doxygen configuration file to local directory" ; \
+	  $(ECHO) "Copy default doxygen configuration file to local directory" ; \
 	  $(CP_F) $(DOXYGEN_CONFIG_DIR)/Doxyfile.in $(LOCAL_DOXYFILE) ; \
 	} fi
-	echo "Touch doxygen configuration file to reflect local package facts"
-	echo 's|PROJECT_NAME[ ]*=.*$$|PROJECT_NAME  =  $(PACKAGE)|g' > $(sed_tmp)
-	echo -n 's|PROJECT_NUMBER[ ]*=.*$$|PROJECT_NUMBER  =  ' >> $(sed_tmp)
-	echo -n `$(GetRevision)` >> $(sed_tmp)
-	echo '|g' >> $(sed_tmp)
-	echo 's|HTML_FOOTER[ ]*=.*$$|HTML_FOOTER  =  $(DOC_HTML_FOOTER)|g' >> $(sed_tmp)
-	echo 's|OUTPUT_DIRECTORY[ ]*=.*$$|OUTPUT_DIRECTORY  =  $(EXPORT_DOCDIR)|g' >> $(sed_tmp)
+	$(ECHO) "Touch doxygen configuration file to reflect local package facts"
+	$(ECHO) 's|PROJECT_NAME[ ]*=.*$$|PROJECT_NAME  =  $(PACKAGE)|g' > $(sed_tmp)
+	$(ECHO) -n 's|PROJECT_NUMBER[ ]*=.*$$|PROJECT_NUMBER  =  ' >> $(sed_tmp)
+	$(ECHO) -n `$(GetRevision)` >> $(sed_tmp)
+	$(ECHO) '|g' >> $(sed_tmp)
+	$(ECHO) 's|HTML_FOOTER[ ]*=.*$$|HTML_FOOTER  =  $(DOC_HTML_FOOTER)|g' >> $(sed_tmp)
+	$(ECHO) 's|OUTPUT_DIRECTORY[ ]*=.*$$|OUTPUT_DIRECTORY  =  $(EXPORT_DOCDIR)|g' >> $(sed_tmp)
 	sed -f $(sed_tmp) < Doxyfile > .Doxyfile
-	echo "Create documentations"
+	$(ECHO) "Create documentations"
 	$(Doxygen_exe) .Doxyfile
 	$(RM_F)   .Doxyfile  $(sed_tmp)
 
