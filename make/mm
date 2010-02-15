@@ -352,6 +352,9 @@ get_standard_target_name() {
 	Darwin__9.*__i386)
 	    mm_standard_target_id="Darwin-9.x_x86" ;;
 
+	Darwin__10.*__i386)
+	    mm_standard_target_id="Darwin-10.x_x86" ;;
+
         HP-UX__B.10.01__9000*)
             mm_standard_target_id="HPUX-10.0_hppa";;
 
