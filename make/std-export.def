@@ -109,8 +109,8 @@ release-libraries:: $(PROJ_LIBDIR) $(EXPORT_LIBDIR)
 export-binaries:: $(EXPORT_BINDIR)
 	for x in $(EXPORT_BINS); do { \
             if [ -f $$x ]; then { \
+                $(CHMOD) +x $$x; \
                 $(CP_F) $$x $(EXPORT_BINDIR); \
-                $(CHMOD) +x $(EXPORT_BINDIR)/$$x; \
             } fi; \
         } done
 
