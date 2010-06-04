@@ -1,0 +1,85 @@
+# -*- Makefile -*-
+
+
+# directory where a luban project is exported
+EXPORT_PROJ_DIR = $(EXPORT_ROOT)/$(PROJECT)
+
+
+# INIT_MUTABLE_DATA_DIRS and init-mutable-data-dirs:
+# ---------------------------------------------------------------------
+# This is only good in the Make.mm at the root of the a luban project
+#
+# INIT_MUTABLE_DATA_DIRS: directories that will be created if they
+# don't exist, and will be owned the uid that runs the luban application.
+#
+# The environment variables "LUBAN_APP_RUNNER_UID" and "LUBAN_APP_RUNNER_GID" 
+# should be defined
+#
+# LUBAN_APP_RUNNER_UID = www-data
+# LUBAN_APP_RUNNER_GID = www-data
+#
+# rule to init those dirs
+init-mutable-data-dirs:
+	for x in $(INIT_MUTABLE_DATA_DIRS); do { \
+	  if [ ! -e $(EXPORT_PROJ_DIR)/$$x ]; then { \
+	    mkdir -p $(EXPORT_PROJ_DIR)/$$x; \
+	    sudo chown $(LUBAN_APP_RUNNER_UID)  $(EXPORT_PROJ_DIR)/$$x; \
+	    sudo chgrp $(LUBAN_APP_RUNNER_GID)  $(EXPORT_PROJ_DIR)/$$x; \
+	  } fi; \
+	} done
+
+
+
+
+# directory where a subpackage of a luban project is exported
+EXPORT_PACKAGE_DIR = $(EXPORT_ROOT)/$(PROJECT)/$(PACKAGE)
+
+
+# INIT_PACKAGE_DATA_FILES and init-package-data-files
+# ---------------------------------------------------------------------------
+# This is good in Make.mm at a subpackage of a luban project.
+# 
+# INIT_PACKAGE_DATA_FILES: data files that will be created only if they don't exist.
+#
+# the rule:
+init-package-data-files:
+	mkdir -p $(EXPORT_PACKAGE_DIR); \
+	for x in $(INIT_PACKAGE_DATA_FILES); do { \
+            if [ -e $$x -a ! -e $(EXPORT_PACKAGE_DIR)/$$x ]; then { \
+	        $(CP_F) $$x $(EXPORT_PACKAGE_DIR)/ ; \
+            } fi; \
+        } done
+
+
+
+# EXPORT_PACKAGE_DATA_FILES and export-package-data-files
+# -------------------------------------------------------------------------
+# This is good in Make.mm at a subpackage of a luban project.
+# 
+# EXPORT_PACKAGE_DATA_FILES: data files that will be copied to $(EXPORT_PACKAGE_DIR)
+#
+# the rule:
+export-package-data-files::
+	mkdir -p $(EXPORT_PACKAGE_DIR); \
+	for x in $(EXPORT_PACKAGE_DATA_FILES); do { \
+	  $(CP_F) $$x $(EXPORT_PACKAGE_DIR)/ ; \
+	} done
+
+
+
+# EXPORT_PACKAGE_DATA_DIRS and export-package-data-dirs
+# -------------------------------------------------------------------------
+# This is good in Make.mm at a subpackage of a luban project.
+# 
+# EXPORT_PACKAGE_DATA_DIRS: data dirs that will be copied to $(EXPORT_PACKAGE_DIR)
+#
+# the rule:
+RSYNC_A = rsync -a
+export-package-data-dirs:: $(EXPORT_PACKAGE_DATA_DIRS)
+	mkdir -p $(EXPORT_PACKAGE_DIR); \
+	for x in $(EXPORT_PACKAGE_DATA_DIRS); do { \
+            if [ -d $$x ]; then { \
+	        $(RSYNC_A) $$x $(EXPORT_PACKAGE_DIR)/ ; \
+            } fi; \
+        } done
+
