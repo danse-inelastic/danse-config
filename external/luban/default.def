@@ -12,14 +12,22 @@ EXPORT_PROJ_DIR = $(EXPORT_ROOT)/$(PROJECT)
 # INIT_MUTABLE_DATA_DIRS: directories that will be created if they
 # don't exist, and will be owned the uid that runs the luban application.
 #
-# The environment variables "LUBAN_APP_RUNNER_UID" and "LUBAN_APP_RUNNER_GID" 
+# There are two ways doing this. 
+# 1. chown files to the user who runs the application. this is a better way 
+# 2. chmod files to be writable by everyone. THis is not very good.
+#    but sometimes this is necessary. 
+# So we have two rules below, init-mutable-data-dirs-bychown
+# and init-mutable-data-dirs-bychmod.
+# 
+# In case of init-mutable-data-dirs-bychown,
+# the environment variables "LUBAN_APP_RUNNER_UID" and "LUBAN_APP_RUNNER_GID" 
 # should be defined
 #
 # LUBAN_APP_RUNNER_UID = www-data
 # LUBAN_APP_RUNNER_GID = www-data
 #
-# rule to init those dirs
-init-mutable-data-dirs:
+# rule 
+init-mutable-data-dirs-bychown:
 	for x in $(INIT_MUTABLE_DATA_DIRS); do { \
 	  if [ ! -e $(EXPORT_PROJ_DIR)/$$x ]; then { \
 	    mkdir -p $(EXPORT_PROJ_DIR)/$$x; \
@@ -27,8 +35,15 @@ init-mutable-data-dirs:
 	    sudo chgrp $(LUBAN_APP_RUNNER_GID)  $(EXPORT_PROJ_DIR)/$$x; \
 	  } fi; \
 	} done
-
-
+init-mutable-data-dirs-bymod:
+	for x in $(INIT_MUTABLE_DATA_DIRS); do { \
+	  if [ ! -e $(EXPORT_PROJ_DIR)/$$x ]; then { \
+	    mkdir -p $(EXPORT_PROJ_DIR)/$$x; \
+	    chmod a+rwX $(EXPORT_PROJ_DIR)/$$x; \
+	  } fi; \
+	} done
+# by default we use the bychown rule
+init-mutable-data-dirs: init-mutable-data-dirs-bychown
 
 
 # directory where a subpackage of a luban project is exported
