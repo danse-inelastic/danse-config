@@ -35,7 +35,7 @@ init-mutable-data-dirs-bychown:
 	    sudo chgrp $(LUBAN_APP_RUNNER_GID)  $(EXPORT_PROJ_DIR)/$$x; \
 	  } fi; \
 	} done
-init-mutable-data-dirs-bymod:
+init-mutable-data-dirs-bychmod:
 	for x in $(INIT_MUTABLE_DATA_DIRS); do { \
 	  if [ ! -e $(EXPORT_PROJ_DIR)/$$x ]; then { \
 	    mkdir -p $(EXPORT_PROJ_DIR)/$$x; \
@@ -43,7 +43,7 @@ init-mutable-data-dirs-bymod:
 	  } fi; \
 	} done
 # by default we use the bychown rule
-init-mutable-data-dirs: init-mutable-data-dirs-bychown
+init-mutable-data-dirs: init-mutable-data-dirs-bychmod
 
 
 # directory where a subpackage of a luban project is exported
