@@ -9,8 +9,7 @@ SPHINX_BUILD   = sphinx-build
 # additional options for sphinx command
 SPHINX_OPTS    =
 # paper type: a4 or letter
-PAPER         =                         
-
+PAPER          =
 
 
 # to build up the sphinx cmd
@@ -20,6 +19,10 @@ SPHINX_BUILDDIR_DOCTREES = $(PACKAGE_TMPDIR)/doctrees
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALL_SPHINX_OPTS   = -d $(SPHINX_BUILDDIR_DOCTREES) $(PAPEROPT_$(PAPER)) $(SPHINX_OPTS) .
+
+
+sphinx-clean:
+	rm -rf $(SPHINX_BUILDDIR_DOCTREES)
 
 
 sphinx-build: $(EXPORT_DOCDIR)
