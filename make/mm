@@ -382,6 +382,9 @@ get_standard_target_name() {
         Linux__2.*__x86_64)
             mm_standard_target_id="Linux-2.0_x86_64";;
 
+        Linux__3.*__i[456]86)
+            mm_standard_target_id="Linux-2.0_x86";;
+
 	CYGWIN*NT*4.0*i[456]86)
 	    mm_standard_target_id="Win32-4.0_x86" ;;
 
