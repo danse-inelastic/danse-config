@@ -1,2 +1,2 @@
 # danse-config
-"mm" build system used in DANSE by Michael Aivazis et al.
+"mm" build system used in DANSE. Authored by Michael Aivazis et al.
